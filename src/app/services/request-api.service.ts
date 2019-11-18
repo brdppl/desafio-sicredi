@@ -10,7 +10,7 @@ export class RequestApiService {
     public http: HttpClient
   ) { }
 
-  public urlBase = 'http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1';
+  public urlBase = 'https://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1';
 
   getRequest = (endpoint) => this.http.get(`${this.urlBase}/${endpoint}`);
 
