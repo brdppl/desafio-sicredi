@@ -1,0 +1,51 @@
+<section class="profile-page">
+    <div class="container-fluid content">
+        <h1>Dados pessoais</h1>
+
+        <ngb-alert type="info" [hidden]="!alertInfo" (close)="alertInfo = false">
+            <fa-icon [icon]="faInfoCircle"></fa-icon> Esta tela é meramente visual, ela não realiza ação alguma.
+        </ngb-alert>
+
+        <mat-card>
+            <form [formGroup]="formProfile">
+                <div class="box mb-50">
+                    <div class="img-frame">
+                        <img [src]="user.photo_url" class="rounded-circle">
+                        <label class="overlay" for="fileInput">
+                            <fa-icon [icon]="faCamera"></fa-icon>
+                        </label>
+                        <input type="file" id="fileInput" class="form-control" name="imagem">
+                    </div>
+                    <div class="d-flex h-center mt-15 mb-15">
+                        <button type="button" mat-raised-button color="primary">
+                            <fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <mat-form-field>
+                            <input type="text" matInput placeholder="Nome" formControlName="name">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <mat-form-field>
+                            <input type="text" matInput placeholder="Sobrenome" formControlName="last_name">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <mat-form-field>
+                            <input type="email" matInput placeholder="Email" formControlName="email">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <button mat-raised-button class="password-button" color="primary"><fa-icon [icon]="faLock"></fa-icon> Mudar senha</button>
+                    </div>
+                </div>
+                <button type="submit" mat-fab class="save-button">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </form>
+        </mat-card>
+    </div>
+</section>

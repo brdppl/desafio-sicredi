@@ -1,0 +1,25 @@
+<section class="details-page">
+    <div class="container-fluid content">
+        <h1>Detalhes do dragão</h1>
+
+        <div class="loader-container" [hidden]="!isLoadingDragon">
+            <mat-spinner strokeWidth="6"></mat-spinner>
+        </div>
+
+        <mat-card [hidden]="isLoadingDragon">
+            <mat-list role="list">
+                <mat-list-item role="listitem">
+                    <p><strong>Nome:</strong> {{dragon.name}}</p>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item role="listitem">
+                    <p><strong>Tipo:</strong> {{dragon.type}}</p>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item role="listitem">
+                    <p><strong>Criado em:</strong> {{dragon.createdAt | date: 'dd/MM/yyyy'}} às {{dragon.createdAt | date: 'HH:mm'}}</p>
+                </mat-list-item>
+            </mat-list>
+        </mat-card>
+    </div>
+</section>

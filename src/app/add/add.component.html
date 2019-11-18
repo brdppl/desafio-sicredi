@@ -1,0 +1,24 @@
+<section class="add-page">
+    <div class="container-fluid content">
+        <h1>Adicionar dragão</h1>
+        <mat-card>
+            <form [formGroup]="formAdd" #formDirective="ngForm">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <mat-form-field>
+                            <input matInput placeholder="Nome" formControlName="name">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <mat-form-field>
+                            <input matInput placeholder="Tipo" formControlName="type">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 mt-15 d-flex h-center">
+                        <button type="submit" mat-raised-button color="accent" class="btn-add" (click)="save(formDirective)" [disabled]="formAdd.invalid">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</section>

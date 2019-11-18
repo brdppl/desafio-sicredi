@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Editar dragão</h1>
+<div mat-dialog-content>
+    <form [formGroup]="formEdit">
+        <mat-form-field>
+            <input matInput type="text" placeholder="Nome" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Tipo" formControlName="type">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions class="d-flex h-end">
+    <button mat-flat-button color="accent" (click)="save()">Salvar</button>
+    <button mat-flat-button (click)="close(false)">Fechar</button>
+</div>

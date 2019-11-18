@@ -1,0 +1,58 @@
+<section class="home-page" [hidden]="!user.id">
+    <div class="container-fluid content">
+        <h1>Lista de dragões</h1>
+
+        <div class="loader-container" [hidden]="!isLoadingDragons">
+            <mat-spinner strokeWidth="6"></mat-spinner>
+        </div>
+
+        <div [hidden]="isLoadingDragons">
+            <ngb-alert type="info" [hidden]="!alertInfo" (close)="alertInfo = false">
+                <fa-icon [icon]="faInfoCircle"></fa-icon> Clique em algum dragão para ver mais informações sobre ele.
+            </ngb-alert>
+            
+            <mat-form-field>
+                <input matInput type="text" placeholder="Pesquisar" (keyup)="search($event.target.value)">
+            </mat-form-field>
+    
+            <div class="table-responsive mat-elevation-z2">
+                <table mat-table [dataSource]="dragons" matSort matSortActive="name" matSortDirection="asc">
+        
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+                        <td mat-cell *matCellDef="let dragon" (click)="details(dragon)">{{dragon.name}}</td>
+                    </ng-container>
+                    
+                    <!-- Type Column -->
+                    <ng-container matColumnDef="type">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+                        <td mat-cell *matCellDef="let dragon" (click)="details(dragon)">{{dragon.type}}</td>
+                    </ng-container>
+                    
+                    <!-- CreatedAt Column -->
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Data de criação</th>
+                        <td mat-cell *matCellDef="let dragon" (click)="details(dragon)">{{dragon.createdAt | date:'dd/MM/yyyy'}}</td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef>Ações</th>
+                        <td mat-cell *matCellDef="let dragon">
+                            <button mat-flat-button color="primary" (click)="edit(dragon)" style="margin-right: 5px;">Editar</button>
+                            <button mat-flat-button color="warn" (click)="delete(dragon)">Excluir</button>
+                        </td>
+                    </ng-container>
+                    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+    </div>
+
+    <button mat-fab class="add-button" routerLink="/new-dragon" matTooltip="Adicionar">
+        <mat-icon>add</mat-icon>
+    </button>
+</section>

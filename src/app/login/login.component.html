@@ -1,0 +1,22 @@
+<section class="login-page">
+    <div class="box">
+        <h3 class="text-center mb-15">Faça seu login</h3>
+        <form [formGroup]="formLogin">
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field>
+                        <input matInput type="email" placeholder="Email" formControlName="email">
+                    </mat-form-field>
+                </div>
+                <div class="col-12 mb-15">
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Senha" formControlName="password">
+                    </mat-form-field>
+                </div>
+                <div class="col-12 d-flex h-center v-center">
+                    <button mat-stroked-button class="btn-login" (click)="login()">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

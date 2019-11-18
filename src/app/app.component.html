@@ -1,0 +1,39 @@
+<section [ngClass]="{'sidebar-collapse': sidebarCollapsed}">
+  <nav id="header" class="navbar navbar-expand-md fixed-top mat-elevation-z3">
+      <a href="" [routerLink]="" class="btn-collapse" (click)="sidebarCollapse()"><fa-icon [icon]="faBars"></fa-icon></a>
+      <a class="navbar-brand" routerLink="/">{{title}}</a>
+  
+      <button class="navbar-toggler hamburger hamburger--collapse" type="button"
+              [ngClass]="{'is-active': !sidebarCollapsed}"
+              (click)="sidebarCollapse()"
+              aria-expanded="false" aria-label="Toggle navigation">
+          <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+          </span>
+      </button>
+  </nav>
+  
+  <div id="sidebar" class="mat-elevation-z6" [hidden]="!user.id">
+      <ul class="list-unstyled">
+          <li class="nav-item user" routerLink="/meus-dados" routerLinkActive="active">
+              <div class="box">
+                  <div class="img-frame">
+                      <img [src]="user.photo_url" class="rounded-circle">
+                  </div>
+                  <p class="text-center">{{user.name}} {{user.last_name}}</p>
+              </div>
+          </li>
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+              <a class="nav-link" routerLink="/"><fa-icon [icon]="faDragon"></fa-icon> <span>Dragões</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="" [routerLink]="" (click)="logout()"><fa-icon [icon]="faSignOutAlt"></fa-icon> <span>Sair</span></a>
+          </li>
+      </ul>
+  </div>
+  
+  <div class="panel-content">
+      <div class="sidebar-backdrop" [ngClass]="{'backdrop-active': !sidebarCollapsed}" (click)="sidebarCollapse()"></div>
+      <router-outlet></router-outlet>
+  </div>
+</section>
